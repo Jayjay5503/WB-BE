@@ -132,15 +132,41 @@
             color: #fff;
             /* Optional: Footer text color */
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: rgba(22, 143, 241, 0.8);
+            color: #fff;
+        }
     </style>
+
+    
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
         style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+        <div class="container-fluid px-0">
+            <a href="../index.html" class="back-button">Back</a>
+        </div>
         <h3 class="w3-padding-64 w3-center"><b>EXPLORE<br>ISLANDS</b></h3>
         <a href="javascript:void(0)" onclick="w3_close()"
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">PORTFOLIO</a>
         <a href="#contacts" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+        
     </nav>
 
     <!-- Top menu on small screens -->

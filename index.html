@@ -120,13 +120,9 @@
             text-align: center;
             font-size: 0.9rem;
             position: fixed;
-            /* Fixes the footer to the bottom of the page */
             bottom: 0;
-            /* Places it at the bottom */
             width: 100%;
-            /* Ensures it spans the full width of the page */
             z-index: 1000;
-            /* Stacks it above other content */
         }
 
         .btn-wrapper {
@@ -173,7 +169,6 @@
 
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#home">JJ's WORKS</a>
@@ -192,7 +187,6 @@
         </div>
     </nav>
 
-    <!-- Welcome Section -->
     <div class="section" id="home"
         style="position: relative; height: 100vh; background-image: url('home-bg.jpg'); background-size: cover; background-position: center; color: white; display: flex; justify-content: center; align-items: center;">
         <div class="overlay"
@@ -214,7 +208,6 @@
             </a>
         </div>
 
-        <!-- Animation Effects -->
         <style>
             .animated {
                 animation-duration: 1s;
@@ -239,7 +232,6 @@
         </style>
     </div>
 
-    <!-- About Section -->
     <div class="section" id="about">
         <h2>About Me</h2>
         <img src="img/Jj.png" alt="JJ's Picture" class="img-fluid rounded-circle mx-auto d-block"
@@ -253,7 +245,6 @@
         </p>
     </div>
 
-    <!-- Projects Section -->
     <div class="section" id="projects">
         <h2>Explore My Projects</h2>
 
@@ -261,7 +252,6 @@
             <button class="btn btn-custom" onclick="navigateTo('A08/index.html')">A08</button>
         </div>
 
-        <!-- Contacts Section -->
         <div class="section" id="contacts">
             <h2>Contact Me</h2>
             <div>
@@ -274,7 +264,6 @@
             </div>
         </div>
 
-        <!-- Widget Section -->
         <div class="section" id="widget">
             <h2>Spotify Playlist</h2>
             <p>Listen to my favorite tracks while browsing through JJ's WORKS:</p>
@@ -289,14 +278,12 @@
             © 2024 JJ's WORKS | All Rights Reserved
         </footer>
 
-        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             function navigateTo(page) {
                 window.location.href = page;
             }
 
-            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
