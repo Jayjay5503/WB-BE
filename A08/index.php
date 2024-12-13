@@ -1,3 +1,19 @@
+<?php
+include('connect.php');
+
+if (isset($_GET['islandOfPersonalityID'])) {
+    $islandOfPersonalityID = $_GET['islandOfPersonalityID'];
+    $islandQuery = "SELECT * FROM islandcontents WHERE islandOfPersonalityID = '$islandOfPersonalityID'";
+    $islandResult = executeQuery($islandQuery);
+    $row = mysqli_fetch_assoc($islandResult);
+}
+
+
+$query = "SELECT * FROM islandsofpersonality";
+$result = executeQuery($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,104 +49,16 @@
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
     <style>
-        /* CSS */
-        .section {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #f9f9f9;
-            /* Light gray background */
-            border-radius: 10px;
-            /* Slightly rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            /* Subtle shadow */
-            max-width: 600px;
-            /* Max width for better responsiveness */
-            margin: 0 auto;
-            /* Center horizontally */
+        <style>body {
+            background: linear-gradient(45deg, #6B0772, #360167);
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-family: 'Metamorphous', sans-serif;
         }
 
-        .centered {
-            font-size: 2.5rem;
-            /* Larger font size for the heading */
-            margin-bottom: 20px;
-        }
-
-        .icon-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            /* Space between icons */
-            margin-top: 20px;
-        }
-
-        .icon-btn {
-            display: inline-block;
-            font-size: 1.5rem;
-            color: #333;
-            /* Icon color */
-            transition: color 0.3s;
-            /* Smooth color transition */
-        }
-
-        .icon-btn:hover {
-            color: #007bff;
-            /* Change color on hover */
-        }
-
-        .w3-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            /* Adjust spacing between images */
-        }
-
-        .image-container {
-            text-align: center;
-            margin: 10px 0;
-        }
-
-        .centered-image {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-
-        .centered-image:hover {
-            transform: scale(1.05);
-        }
-
-
-
-        .icon-btn {
-            margin: 0 10px;
-            font-size: 18px;
-            text-decoration: none;
-            color: #000;
-            transition: color 0.3s;
-        }
-
-        .icon-btn:hover {
-            color: #007BFF;
-        }
-
-        /* Add spacing between the Contacts Section and Footer */
-        .section {
-            margin-bottom: 50px;
-            /* Adds space below the section */
-        }
-
-        .footer {
-            text-align: center;
-            /* Center footer content */
-            margin: 0 auto;
-            padding: 10px;
-            background-color: #000;
-            /* Optional: Footer background color */
-            color: #fff;
-            /* Optional: Footer text color */
+        h1 {
+            font-family: 'Metamorphous', sans-serif;
         }
 
         .back-button {
@@ -149,29 +77,140 @@
         }
 
         .back-button:hover {
-            background-color: rgba(22, 143, 241, 0.8);
+            background-color: rgba(150, 27, 133, 0.8);
             color: #fff;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            /* Maintain aspect ratio */
+            object-fit: cover;
+            /* Ensures images fill their containers */
+        }
+
+        .col img {
+            width: 100%;
+            /* Ensure responsiveness */
+            height: auto;
+            /* Maintain aspect ratio */
+            border-radius: 8px;
+            /* Optional: Rounded corners */
+            margin-bottom: 20px;
+            /* Add spacing */
+        }
+
+        .row {
+            gap: 20px;
+            /* Adjust spacing between rows */
+            display: flex;
+            /* Use flexbox for grid layout */
+            flex-wrap: wrap;
+            /* Allows columns to wrap onto multiple lines */
+        }
+
+        .row .col {
+            flex: 1 1 22%;
+            /* Distribute space evenly */
+            max-width: 100%;
+            /* Ensure responsive layout */
+        }
+
+        @media (max-width: 768px) {
+            .row .col {
+                flex: 1 1 45%;
+                /* Two columns on smaller screens */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .row .col {
+                flex: 1 1 100%;
+                /* One column on extra-small screens */
+            }
+        }
+
+        .about {
+            color: #b800ae;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .aboutContent {
+            color: #d3d3d3;
+            font-size: 20px;
+            text-align: justify;
+            font-family: 'Metamorphous', sans-serif;
+        }
+
+        .custom-image {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .projects {
+            max-width: 700px;
+            max-height: 700px;
+            margin: auto;
+        }
+
+        .image-style {
+            width: 100%;
+            height: 100%;
+            max-width: 700px;
+            max-height: 700px;
+            object-fit: cover;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0);
+            padding-top: 10px;
+        }
+
+        footer a {
+            color: #3a035f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #f4cafa;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                font-size: 1.5rem;
+            }
+
+            .aboutContent {
+                font-size: 20px;
+            }
         }
     </style>
 
-    
+
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-bar-block w3-white w3-animate-left w3-text-grey w3-collapse w3-top w3-center"
-        style="z-index:3;width:300px;font-weight:bold" id="mySidebar"><br>
+        style="z-index:3;width:250px;font-weight:bold;position:fixed; left: 15px; top: 0;" id="mySidebar">
+        <br>
         <div class="container-fluid px-0">
-            <a href="../index.html" class="back-button">Back</a>
+            <a href="../index.php" class="back-button">Back</a>
         </div>
         <h3 class="w3-padding-64 w3-center"><b>EXPLORE<br>ISLANDS</b></h3>
         <a href="javascript:void(0)" onclick="w3_close()"
             class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
         <a href="#" onclick="w3_close()" class="w3-bar-item w3-button">PORTFOLIO</a>
         <a href="#contacts" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
-        
     </nav>
+
 
     <!-- Top menu on small screens -->
     <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
-        <span class="w3-left w3-padding">SOME NAME</span>
+        <span class="w3-left w3-padding">EXPLORE ISLANDS</span>
         <a href="javascript:void(0)" class="w3-right w3-button w3-white" onclick="w3_open()">☰</a>
     </header>
 
@@ -180,40 +219,31 @@
         title="close side menu" id="myOverlay"></div>
 
     <!-- Page Content -->
-    <div class="w3-main" style="margin-left:300px">
+    <div class="w3-main" style="margin-left:150px">
 
         <!-- Push down content on small screens -->
         <div class="w3-hide-large" style="margin-top:83px"></div>
 
-        <!-- Photo grid -->
-        <div class="w3-row-padding">
-            <div class="w3-col m6 image-container">
-                <a href="volley.html">
-                    <img src="images/JOY.png" class="centered-image w3-hover-opacity"
-                        style="max-width:100%; height:auto;" onclick="onClick(this)" alt="VOLLEY ISLAND">
-                </a>
-            </div>
-            <div class="w3-col m6 image-container">
-                <a href="puerto.html">
-                    <img src="images/SAD.png" class="centered-image w3-hover-opacity"
-                        style="max-width:100%; height:auto;" onclick="onClick(this)" alt="PUERTO GALAERA ISLAND">
-                </a>
-            </div>
-        </div>
-        <div class="w3-row-padding" style="margin-top:16px;">
-            <div class="w3-col m6 image-container">
-                <a href="instrument.html">
-                    <img src="images/DISGUST.png" class="centered-image w3-hover-opacity"
-                        style="max-width:100%; height:auto;" onclick="onClick(this)" alt="INSTRUMENT ISLAND">
-                </a>
-            </div>
-            <div class="w3-col m6 image-container">
-                <a href="art.html">
-                    <img src="images/FEAR.png" class="centered-image w3-hover-opacity"
-                        style="max-width:100%; height:auto;" onclick="onClick(this)" alt="ART ISLAND">
-                </a>
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <?php
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $islandOfPersonalityID = $row['islandOfPersonalityID'];
+                        $image = $row['image'];
+                        ?>
+                        <div class="col-12 col-sm-6 col-md-3">
+                            <a href="view.php?islandOfPersonalityID=<?php echo $islandOfPersonalityID; ?>">
+                                <img src="images/<?php echo $image; ?>" class="img-fluid">
+                            </a>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
             </div>
         </div>
+
 
 
 

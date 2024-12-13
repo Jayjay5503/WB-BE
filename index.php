@@ -249,7 +249,7 @@
         <h2>Explore My Projects</h2>
 
         <div class="btn-wrapper">
-            <button class="btn btn-custom" onclick="navigateTo('A08/index.html')">A08</button>
+            <button class="btn btn-custom" onclick="navigateTo('A08/index.php')">A08</button>
         </div>
 
         <div class="section" id="contacts">
